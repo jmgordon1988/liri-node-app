@@ -14,7 +14,7 @@ var search = process.argv[2];
 var input = process.argv.slice(3).join(" ");;
 
 function appendInfo() {
-    fs.appendFile("random.txt", search + ", " + input + '\r\n', function (error, data) {
+    fs.appendFile("log.txt", search + ", " + input + '\r\n', function (error, data) {
         if (error) {
             console.log(error);
         } else {
@@ -39,6 +39,7 @@ if (search === "concert-this") {
     appendInfo();
 
 } else if (search === "do-what-it-says") {
+    var input = "I Want it That Way";
     doWhatItSays();
     appendInfo();
 }
@@ -95,7 +96,14 @@ function spotifyThis(song) {
 function doWhatItSays(){
     fs.readFile('random.txt', "utf8", function(error, data){
       var txt = data.split(',');
-  
+      if (txt[0] === "spotify-this-song"){
       spotifyThis(txt[1]);
+      }
+      else if (txt[0] === "movie-this"){
+          movieThis(txt[1]);
+      }
+      else {
+          concertThis(txt[1]);
+      }
     });
   }
