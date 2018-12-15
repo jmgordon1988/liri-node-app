@@ -11,7 +11,8 @@ var spotify = new Spotify({
 });
 
 var search = process.argv[2];
-var input = process.argv.slice(3).join(" ");;
+var input = process.argv.slice(3).join(" ");
+
 
 function appendInfo() {
     fs.appendFile("log.txt", search + ", " + input + '\r\n', function (error, data) {
@@ -39,9 +40,7 @@ if (search === "concert-this") {
     appendInfo();
 
 } else if (search === "do-what-it-says") {
-    var input = "I Want it That Way";
     doWhatItSays();
-    appendInfo();
 }
 
 
@@ -60,7 +59,7 @@ function concertThis(band) {
     });
 }
 function movieThis(movie) {
-    var movieUrl = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy";
+    var movieUrl = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&r=json&tomatoes=true&apikey=trilogy";
     request(movieUrl, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             var movie = JSON.parse(body);
@@ -93,17 +92,18 @@ function spotifyThis(song) {
         })
     });
 }
-function doWhatItSays(){
-    fs.readFile('random.txt', "utf8", function(error, data){
-      var txt = data.split(',');
-      if (txt[0] === "spotify-this-song"){
-      spotifyThis(txt[1]);
-      }
-      else if (txt[0] === "movie-this"){
-          movieThis(txt[1]);
-      }
-      else {
-          concertThis(txt[1]);
-      }
+function doWhatItSays() {
+    fs.readFile('random.txt', "utf8", function (error, data) {
+        var txt = data.split(',');
+        var input = txt[1];
+        if (txt[0] === "spotify-this-song") {
+            spotifyThis(input);
+        }
+        else if (txt[0] === "movie-this") {
+            movieThis(input);
+        }
+        else {
+            concertThis(input);
+        }
     });
-  }
+}
