@@ -12,10 +12,11 @@ var spotify = new Spotify({
 
 var search = process.argv[2];
 var input = process.argv.slice(3).join("+");
+var logInput = process.argv.slice(3).join(" ");
 
 
 function appendInfo() {
-    fs.appendFile("log.txt", search + ", " + input + '\r\n', function (error, data) {
+    fs.appendFile("log.txt", search + ", " + logInput + '\r\n', function (error, data) {
         if (error) {
             console.log(error);
         } else {
