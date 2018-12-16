@@ -85,7 +85,7 @@ function movieThis(movie) {
 }
 
 function spotifyThis(song) {
-    spotify.search({ type: "track", query: song, limit: 1 }, function (error, data) {
+    spotify.search({ type: "track", query: song, limit: 3 }, function (error, data) {
         if (error) {
             return console.log("Something went wrong: " + error);
         }
@@ -102,6 +102,8 @@ function spotifyThis(song) {
 }
 function doWhatItSays() {
     fs.readFile('random.txt', "utf8", function (error, data) {
+        if (error) throw error;
+        
         var txt = data.split(',');
         var input = txt[1];
         if (txt[0] === "spotify-this-song") {
