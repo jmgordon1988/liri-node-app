@@ -66,7 +66,11 @@ function movieThis(movie) {
             console.log("Movie Title: " + movie.Title);
             console.log("Year: " + JSON.parse(body).Year);
             console.log("IMDB rating: " + JSON.parse(body).imdbRating);
-            console.log("Rotten Tomatoes rating: " + JSON.parse(body).Ratings[1].Value);
+            for (var i = 0; i < movie.Ratings.length; i++) {
+                if (movie.Ratings[i].Source === "Rotten Tomatoes") {
+                    console.log("Rotten Tomatoes Rating: ", movie.Ratings[i].Value);
+                    break;
+                }}
             console.log("Country: " + JSON.parse(body).Country);
             console.log("Language: " + JSON.parse(body).Language);
             console.log("Plot: " + JSON.parse(body).Plot);
