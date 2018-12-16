@@ -60,3 +60,19 @@ movie-this, [object Undefined]
 spotify-this-song, doo wop
 spotify-this-song, life is a highway
 spotify-this-song, life is a highway
+movie-this, evil dead 2
+movie-this, spiderman 2
+movie-this, spiderman
+movie-this, spider-man
+movie-this, spiderman+2
+movie-this, evil+dead+2
+spotify-this-song, life+is+a+highway
+spotify-this-song, doo+wop
+movie-this, spider-man+2
+movie-this, batman+and+robin
+movie-this, evil+dead+2
+movie-this, evil+dead+2
+movie-this, spider-man+2
+movie-this, the+evil+dead+2
+movie-this, superman+2
+movie-this, evil+dead+ii

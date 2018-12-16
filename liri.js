@@ -11,7 +11,7 @@ var spotify = new Spotify({
 });
 
 var search = process.argv[2];
-var input = process.argv.slice(3).join(" ");
+var input = process.argv.slice(3).join("+");
 
 
 function appendInfo() {
@@ -61,7 +61,10 @@ function concertThis(band) {
 function movieThis(movie) {
     var movieUrl = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&r=json&tomatoes=true&apikey=trilogy";
     request(movieUrl, function (error, response, body) {
-        if (!error && response.statusCode === 200) {
+        if (error) {
+            return console.log("Something went wrong: " + error);
+        }
+        else if (!error && response.statusCode === 200) {
             var movie = JSON.parse(body);
             console.log("Movie Title: " + movie.Title);
             console.log("Year: " + JSON.parse(body).Year);
