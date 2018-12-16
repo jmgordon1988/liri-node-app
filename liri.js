@@ -81,7 +81,7 @@ function movieThis(movie) {
 }
 
 function spotifyThis(song) {
-    spotify.search({ type: "track", query: song }, function (error, data) {
+    spotify.search({ type: "track", query: song, limit: 1 }, function (error, data) {
         if (error) {
             return console.log("Something went wrong: " + error);
         }

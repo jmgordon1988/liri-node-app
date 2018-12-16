@@ -56,3 +56,7 @@ movie-this, evil dead 2
 movie-this, the curious case of benjamin button
 movie-this, the curious case of benjamin button
 movie-this, batman and robin
+movie-this, [object Undefined]
+spotify-this-song, doo wop
+spotify-this-song, life is a highway
+spotify-this-song, life is a highway
